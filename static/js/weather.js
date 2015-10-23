@@ -1,4 +1,5 @@
 var x = document.getElementById("weather");
+var y = document.getElementById("weatherDescription");
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -14,8 +15,8 @@ function showPosition(position) {
 	console.log(lat + " " + lon);
 	var url = "http://api.wunderground.com/api/08a9bb3c593a3b4d/conditions/forecast/alert/q/" + lat + "," + lon + ".json";
 	$.getJSON(url, function(data) {
-		console.log(data.current_observation.temp_f);
-		x.innerHTML = data.current_observation.temp_f;
+		x.innerHTML = data.current_observation.temp_f + " °F";
+		y.innerHTML = data.current_observation.weather;
 	});
 }
 
